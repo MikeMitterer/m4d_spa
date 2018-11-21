@@ -1,0 +1,16 @@
+@import "package:m4d_components/assets/styles/material-design-lite";
+@import "_app";
+
+.demo-page--include {
+    .demo-preview-block {
+        background-color: transparent;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    ol.linenums {
+        margin-left: 0;
+    }
+}

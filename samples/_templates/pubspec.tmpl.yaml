@@ -1,0 +1,21 @@
+name: {{samplename}}_sample
+description: Material4Dart (m4d) '{{samplename}}' Sample
+version: 0.1.0
+author: Mike Mitterer <office@mikemitterer.at>
+homepage: https://github.com/MikeMitterer/m4d_dnd
+
+environment:
+  sdk: ">=2.0.0 <3.0.0"
+
+dependencies:
+
+  m4d_content:
+    path: ../..
+
+  m4d_components: '>=0.1.0 <1.0.0'
+  # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_components
+
+dev_dependencies:
+  build_runner: any
+  build_web_compilers: any
+  sass_builder: any

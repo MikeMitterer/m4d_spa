@@ -1,0 +1,46 @@
+name: m4d_content
+description: Material Design 4 Dart - Content / Include
+version: 0.1.4
+author: Mike Mitterer <office@mikemitterer.at>
+homepage: https://github.com/MikeMitterer/m4d_content
+
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
+dependencies:
+  validate: ^1.0.0
+
+  logging: '>=0.11.3 <1.0.0'
+  console_log_handler: ^1.0.0
+
+  # meta: ^1.1.0
+
+  dnd: ^1.0.0
+
+  m4d_core: '>=0.1.0 <1.0.0'
+    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_core
+
+  m4d_flux: '>=0.1.0 <1.0.0'
+    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_flux
+
+  m4d_components: '>=0.1.0 <1.0.0'
+    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_components
+
+  m4d_template: '>=0.1.0 <1.0.0'
+    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_template
+
+  m4d_animation: '>=0.1.0 <1.0.0'
+    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_animation
+
+  m4d_translate: '>=0.1.0 <1.0.0'
+    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_translate
+
+  m4d_router: '>=0.1.0 <1.0.0'
+  # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_router
+
+dev_dependencies:
+  test: any
+
+  build_runner: any
+  build_test: any
+  build_web_compilers: any

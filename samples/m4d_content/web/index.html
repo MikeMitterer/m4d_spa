@@ -55,8 +55,10 @@
             <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
             <div class="content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
                 <section class="demo-section demo-section--content">
-                    <div class="menu">
-    <a href="#/test">Test</a> | <a href="#/test2">Test II</a> | <a href="#/slider">Slider</a> | <a href="#/error">Error</a>
+                    
+<div class="menu">
+    <a href="#/test">Test</a> | <a href="#/test2">Test II</a> | <a href="#/slider">Slider</a> | <a
+        href="#/error">Error</a>
 </div>
 <p>If you click on error - check the console...</p>
 <div class="demo-preview-block demo-content">
@@ -66,7 +68,8 @@
 </div>
 
 <div class="demo-preview-block">
-    <p>I am your main content - I live in index.html (SliderValue: |<span mdl-model="sliderValue">-</span>|)</p>
+    <p>I am your main content - I live in index.html (SliderValue: |<span
+            mdl-model="sliderValue">-</span>|)</p>
     <p>
         <input class="mdl-slider" type="range"
                min="0" max="100" value="0" tabindex="0" id="mainslider1"/>
@@ -86,9 +89,11 @@
         <input class="mdl-slider" type="range"
                min="0" max="100" value="10" tabindex="0" disabled id="mainslider4"/>
     </p>
-    <p>Try to drag the second slider. Click on <a href="#/slider">Slider</a> and you'll see how the dynamically loaded
-    slider.html reflects your changes in the main model! If the "Slider sample" is loaded drag one of the blue sliders.
-    They return their value to the main model and you'll see all three sliders moving.</p>
+    <p>Try to drag the second slider. Click on <a href="#/slider">Slider</a> and you'll see how the
+        dynamically loaded
+        slider.html reflects your changes in the main model! If the "Slider sample" is loaded drag
+        one of the blue sliders.
+        They return their value to the main model and you'll see all three sliders moving.</p>
 
     <div class="cols">
         <div class="col">
@@ -97,14 +102,14 @@
                 <m4d-list model="dyntest">
                     <template>
                         <li class="dynamic">
-                        <span>RND value: {{value}}</span>
-                        <button
-                                id="list_btn{{index}}"
-                                class="mdl-button mdl-button--raised mdl-button--colored mdl-ripple-effect"
-                                data-mdl-click="onClick('{{index}}')"
-                                >
-                            Button #{{index}}
-                        </button>
+                            <span>RND value: {{value}}</span>
+                            <button
+                                    id="list_btn{{index}}"
+                                    class="mdl-button mdl-button--raised mdl-button--colored mdl-ripple-effect"
+                                    data-mdl-click="onClick('{{index}}')"
+                            >
+                                Button #{{index}}
+                            </button>
                         </li>
                     </template>
                 </m4d-list>
@@ -119,6 +124,7 @@
     </div>
 </div>
 
+                
                 </section>
             </div>
         </div>

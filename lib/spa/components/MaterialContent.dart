@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-part of m4d_content;
+part of m4d_spa;
 
 /// MaterialContent is [ScopeAware] - this means that it can be found by child-MaterialComponent
 /// looking for Data (like [MaterialRepeat]

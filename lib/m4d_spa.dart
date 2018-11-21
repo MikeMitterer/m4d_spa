@@ -20,7 +20,7 @@
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
-library m4d_content;
+library m4d_spa;
 
 import 'dart:html' as dom;
 import 'dart:async';
@@ -54,10 +54,10 @@ import 'package:m4d_router/router.dart';
 //import 'services.dart' as service;
 
 
-part "content/ViewFactory.dart";
-part "content/MaterialContoller.dart";
-part "content/components/MaterialContent.dart";
-part "content/components/MaterialInclude.dart";
+part "spa/ViewFactory.dart";
+part "spa/MaterialContoller.dart";
+part "spa/components/MaterialContent.dart";
+part "spa/components/MaterialInclude.dart";
 
 void registerContentComponents() {
 

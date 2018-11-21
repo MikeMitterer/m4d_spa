@@ -1,5 +1,5 @@
-name: m4d_content
-description: Material Design 4 Dart - Content / Include
+name: m4d_spa
+description: Material Design 4 Dart - SinglePage
 version: 0.1.4
 author: Mike Mitterer <office@mikemitterer.at>
 homepage: https://github.com/MikeMitterer/m4d_content

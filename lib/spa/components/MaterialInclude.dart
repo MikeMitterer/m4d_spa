@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-part of m4d_content;
+part of m4d_spa;
 
 class MaterialContentEvent{}
 

@@ -12,7 +12,7 @@ import 'package:m4d_core/services.dart' as coreService;
 
 import 'package:m4d_components/m4d_components.dart';
 
-import 'package:m4d_content/m4d_content.dart';
+import 'package:m4d_spa/m4d_spa.dart';
 import 'package:m4d_router/router.dart';
 
 import 'package:m4d_content_sample/m4d_content_sample.dart';

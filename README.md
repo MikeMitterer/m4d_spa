@@ -1,7 +1,7 @@
-# Material 4 Dart - Content / Include
+# Material 4 Dart - SinglePage-Components
 
 ## Examples
-> [GitHub](https://github.com/MikeMitterer/m4d_content)
+> [GitHub](https://github.com/MikeMitterer/m4d_spa)
 
 
  

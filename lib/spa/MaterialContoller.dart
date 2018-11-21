@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-part of m4d_content;
+part of m4d_spa;
 
 abstract class MaterialController {
     /// [iocContainer] will be set after {ViewFactory} receives the {onLoadEnd} Event

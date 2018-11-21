@@ -31,4 +31,9 @@
             width: calc(50% - 12px);
         }
     }
+
+    li.dynamic > span {
+        min-width: 8em;
+        display: inline-block;
+    }
 }

@@ -9,6 +9,7 @@ import 'package:console_log_handler/console_log_handler.dart';
 
 import 'package:m4d_core/m4d_ioc.dart' as ioc;
 import 'package:m4d_core/services.dart' as coreService;
+import 'package:m4d_flux/m4d_flux.dart';
 
 import 'package:m4d_components/m4d_components.dart';
 
@@ -16,6 +17,7 @@ import 'package:m4d_spa/m4d_spa.dart';
 import 'package:m4d_router/router.dart';
 
 import 'package:m4d_content_sample/m4d_content_sample.dart';
+import 'package:m4d_content_sample/components/interfaces/actions.dart';
 
 import 'includes/store.dart';
 
@@ -38,7 +40,7 @@ class Application extends MaterialApplication {
 
         mainslider.onInput.listen((_) => _store.sliderValue = mainslider.value);
 
-        _store.onChange.listen((_) {
+        void _render() {
             String items() {
                 final StringBuffer line = new StringBuffer();
                 for(int counter = 0; counter < _store.sliderValue; counter++) {
@@ -70,12 +72,20 @@ class Application extends MaterialApplication {
                 });
             });
 
+        }
+        
+        _render();
+        _store.onChange.listen((final DataStoreChangedEvent event) {
+            // optimize rendering
+            if(event.data is ListChangedAction) {
+                _render();
+            }
         });
     }
 }
 
 main() async {
-    configLogging(show: Level.INFO);
+    configLogging(show: Level.FINE);
 
     // Initialize M4D
     ioc.IOCContainer.bindModules([
@@ -103,30 +113,32 @@ class Day {
 class ObservableController extends MaterialController  {
     final Logger _logger = Logger('main.MaterialContent');
 
-    final time = ObservableProperty<String>("",interval: new Duration(seconds: 1));
-    final days = ObservableList<Day>();
+    Timer _timer;
 
     @override
     void loaded(final RouteEvent event) {
         _logger.info("ObservableController loaded...");
 
-        time.observes(() => _getTime());
-        for(int counter = 0; days.length < 7 ;counter++) {
-            days.add(new Day(new DateTime.now().add(new Duration(days: counter))));
+        _timer = Timer.periodic(Duration(seconds: 1), (_) {
+        final _store = ioc.IOCContainer().resolve(AppStoreService).as<AppStore>();
+
+        String _getTime() {
+            final DateTime now = new DateTime.now();
+            return "${now.hour.toString().padLeft(2,"0")}:${now.minute.toString().padLeft(2,"0")}:${now.second.toString().padLeft(2,"0")}";
         }
+
+        _store.time = _getTime();
+        });
     }
 
     @override
     void unload() {
         _logger.info("ObservableController removed!");
+        _timer?.cancel();
     }
     
     // - private ------------------------------------------------------------------------------------------------------
 
-    String _getTime() {
-        final DateTime now = new DateTime.now();
-        return "${now.hour.toString().padLeft(2,"0")}:${now.minute.toString().padLeft(2,"0")}:${now.second.toString().padLeft(2,"0")}";
-    }
 }
 
 class DemoController extends MaterialController {

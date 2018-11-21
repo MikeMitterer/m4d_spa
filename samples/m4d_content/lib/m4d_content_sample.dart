@@ -36,6 +36,7 @@ import "package:m4d_flux/m4d_flux.dart";
 import 'package:m4d_template/m4d_template.dart';
 
 import 'components/interfaces/SimpleDataObject.dart';
+import 'components/interfaces/actions.dart';
 
 part 'components/ListComponent.dart';
 

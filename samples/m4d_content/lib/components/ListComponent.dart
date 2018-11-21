@@ -39,7 +39,10 @@ class ListComponent extends MdlTemplateComponent {
 
     void _bindSignals() {
         _store.onChange.listen((final DataStoreChangedEvent event) {
-            render();
+            // optimize rendering
+            if(event.data is ListChangedAction) {
+                render();
+            }
         });
     }
 

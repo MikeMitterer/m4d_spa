@@ -9,6 +9,7 @@ import 'package:m4d_core/m4d_ioc.dart' as ioc;
 
 import 'package:m4d_directive/services.dart' as directiveService;
 import 'package:m4d_content_sample/components/interfaces/SimpleDataObject.dart';
+import 'package:m4d_content_sample/components/interfaces/actions.dart';
 
 final AppStoreService = ioc.Service("app.store.AppStore", ioc.ServiceType.Instance);
 
@@ -26,13 +27,14 @@ class DynamicValue implements SimpleDataObject {
 
 /// AppStore is a Singleton
 class AppStore extends Dispatcher with SimpleDataStoreMixin {
-    Timer timer = null;
+    Timer _timer = null;
 
     AppStore._private() : super(ActionBus()) {
         prop<List<SimpleDataObject>>("dyntest").value = List<SimpleDataObject>();
 
         sliderValue = 5;
-
+        time = "";
+        
         new Future(() => _bind());
     }
 
@@ -51,8 +53,10 @@ class AppStore extends Dispatcher with SimpleDataStoreMixin {
             prop<List<SimpleDataObject>>("dyntest").value.add(DynamicValue(random.toString()));
         }
         prop<int>("sliderValue").value = value;
-        _update();
+        _update(action: ListChangedAction());
     }
+
+    set time(final String time) => prop<String>("time").value = time;
 
     @override
     ObservableProperty<T> prop<T>(final String varname, {
@@ -73,15 +77,17 @@ class AppStore extends Dispatcher with SimpleDataStoreMixin {
 
     // - private -------------------------------------------------------------------------------------
 
-    void _bind() {}
+    void _bind() {
+
+    }
 
     /// Optimize the update cycle
-    void _update() {
-        if (timer == null || !timer.isActive) {
-            timer = Timer(Duration(milliseconds: 200), () {
-                timer?.cancel();
-                timer = null;
-                emitChange();
+    void _update({ final Action action: UpdateViewAction }) {
+        if (_timer == null || !_timer.isActive) {
+            _timer = Timer(Duration(milliseconds: 200), () {
+                _timer?.cancel();
+                _timer = null;
+                emitChange(action: action);
             });
         }
     }

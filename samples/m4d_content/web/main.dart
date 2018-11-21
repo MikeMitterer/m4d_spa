@@ -12,12 +12,13 @@ import 'package:m4d_core/services.dart' as coreService;
 import 'package:m4d_flux/m4d_flux.dart';
 
 import 'package:m4d_components/m4d_components.dart';
+import 'package:m4d_directive/directive/components/interfaces/actions.dart';
+import 'package:m4d_dialog/m4d_dialog.dart';
 
 import 'package:m4d_spa/m4d_spa.dart';
 import 'package:m4d_router/router.dart';
 
 import 'package:m4d_content_sample/m4d_content_sample.dart';
-import 'package:m4d_content_sample/components/interfaces/actions.dart';
 
 import 'includes/store.dart';
 
@@ -77,7 +78,8 @@ class Application extends MaterialApplication {
         _render();
         _store.onChange.listen((final DataStoreChangedEvent event) {
             // optimize rendering
-            if(event.data is ListChangedAction) {
+            if(event.data is PropertyChangedAction
+                && (event.data as PropertyChangedAction).data == "sliderValue" ) {
                 _render();
             }
         });
@@ -85,7 +87,7 @@ class Application extends MaterialApplication {
 }
 
 main() async {
-    configLogging(show: Level.FINE);
+    configLogging(show: Level.INFO);
 
     // Initialize M4D
     ioc.IOCContainer.bindModules([
@@ -190,6 +192,7 @@ void _configRouter(final Router router ) {
     final view = new ViewFactory();
 
     router
+    
         ..addRoute(name: 'test', path: new ReactPattern('/test'),
             enter: view("views/test.html", new DummyController()))
 
@@ -205,6 +208,9 @@ void _configRouter(final Router router ) {
         ..addRoute(name: 'home', path: new ReactPattern('/'),
             enter: view("views/home.html" ,new DummyController()))
 
+        ..addRoute(name: 'docroot', path: new UrlPattern('/'),
+            enter: view("views/home.html" ,new DummyController()))
+
     ;
 
     // optional
@@ -214,6 +220,10 @@ void _configRouter(final Router router ) {
 
     // optional
     router.onError.listen((final RouteErrorEvent event) {
+        
+        final MaterialNotification notification = new MaterialNotification()..autoClose = true;
+        notification("${event.exception.toString()} for ${event.path}",type: NotificationType.ERROR).show();
+
         logger.info("RouteErrorEvent ${event.exception}");
     });
 

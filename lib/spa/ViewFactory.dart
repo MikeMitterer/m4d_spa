@@ -49,7 +49,8 @@ class ViewFactory {
     MaterialController _previousController;
 
     RouteEnterCallback call(final String url, final MaterialController controller, { final String selector: "#main"}) {
-        return (final RouteEvent event) => _enterHandler(event, url, controller, selector);
+        return (final RouteEvent event,[ void onError(final Exception exception) ])
+            => _enterHandler(event, url, controller, selector, onError);
     }
 
 //    void call(final String url, final MaterialController controller, { final String selector: "#main"}) {
@@ -59,7 +60,8 @@ class ViewFactory {
     //- private -----------------------------------------------------------------------------------
 
     void _enterHandler(final RouteEvent event, final String url,
-                       final MaterialController controller, final String selector) {
+                       final MaterialController controller, final String selector,
+                       void onError(final Exception exception) ) {
 
         //Validate.notNull(event);
         Validate.notNull(url);
@@ -89,26 +91,19 @@ class ViewFactory {
                 final String content = sanitizeResponseText(request.responseText);
                 final MaterialContent main = MaterialContent.widget(contentElement);
 
+                if(content == null || content.isEmpty || request.status == 404) {
+                    onError(Exception("$url '${content}' ${request.status}"));
+                } else {
+                    main.render(content).then( (_) {
 
-//                if(controller is ScopeAware) {
-//                    // If you have observable-Properties in your Controller it must be
-//                    // marked as [@mdl.Model]
-//                    // TODO: Check controller if it has a Annotation
-//                    main.scope = (controller as ScopeAware).scope;
-//                }
-//                else {
-//                    main.resetScope();
-//                }
+                        // TODO: Rename injector to iocContainer
+                        controller.iocContainer = main.injector;
+                        controller.loaded(event);
 
-                main.render(content).then( (_) {
-
-                    // TODO: Rename injector to iocContainer
-                    controller.iocContainer = main.injector;
-                    controller.loaded(event);
-
-                    stopwatch.stop();
-                    _logger.info("Page load and rendering took ${stopwatch.elapsedMilliseconds}ms");
-                });
+                        stopwatch.stop();
+                        _logger.info("Page load and rendering took ${stopwatch.elapsedMilliseconds}ms");
+                    });
+                }
             }
         });
 

@@ -9,7 +9,12 @@ class ListComponent extends MdlTemplateComponent {
 
     String _template = null;
     final _paramsFromTemplate = List<String>();
-    
+
+    /// Optimize rendering frequency
+    Timer _timer = null;
+
+    Duration renderIntervall = Duration(milliseconds: 200);
+
     ListComponent.fromElement(final dom.HtmlElement element,final ioc.IOCContainer iocContainer)
         : _store = iocContainer.resolve(directiveService.SimpleValueStore).as<SimpleValueStore>(),
             super(element,iocContainer) {
@@ -40,8 +45,16 @@ class ListComponent extends MdlTemplateComponent {
     void _bindSignals() {
         _store.onChange.listen((final DataStoreChangedEvent event) {
             // optimize rendering
-            if(event.data is ListChangedAction) {
-                render();
+            if(event.data is PropertyChangedAction
+                && (event.data as PropertyChangedAction).data == _model) {
+                
+                    if (_timer == null || !_timer.isActive) {
+                        _timer = Timer(renderIntervall, () {
+                            _timer?.cancel();
+                            _timer = null;
+                            render();
+                        });
+                    }
             }
         });
     }

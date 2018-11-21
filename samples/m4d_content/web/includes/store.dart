@@ -8,8 +8,9 @@ import 'package:m4d_flux/m4d_flux.dart';
 import 'package:m4d_core/m4d_ioc.dart' as ioc;
 
 import 'package:m4d_directive/services.dart' as directiveService;
+import 'package:m4d_directive/directive/components/interfaces/actions.dart';
+
 import 'package:m4d_content_sample/components/interfaces/SimpleDataObject.dart';
-import 'package:m4d_content_sample/components/interfaces/actions.dart';
 
 final AppStoreService = ioc.Service("app.store.AppStore", ioc.ServiceType.Instance);
 
@@ -27,8 +28,6 @@ class DynamicValue implements SimpleDataObject {
 
 /// AppStore is a Singleton
 class AppStore extends Dispatcher with SimpleDataStoreMixin {
-    Timer _timer = null;
-
     AppStore._private() : super(ActionBus()) {
         prop<List<SimpleDataObject>>("dyntest").value = List<SimpleDataObject>();
 
@@ -53,27 +52,27 @@ class AppStore extends Dispatcher with SimpleDataStoreMixin {
             prop<List<SimpleDataObject>>("dyntest").value.add(DynamicValue(random.toString()));
         }
         prop<int>("sliderValue").value = value;
-        _update(action: ListChangedAction());
+        emitChange(action: PropertyChangedAction("dyntest"));
     }
 
     set time(final String time) => prop<String>("time").value = time;
 
-    @override
-    ObservableProperty<T> prop<T>(final String varname, {
-        final T initWith = null, final FormatObservedValue<T> formatter = null }) {
-        if (!bindings.containsKey(varname)) {
-            bindings[varname] = ObservableProperty<T>(initWith, formatter: formatter);
-            bindings[varname].onChange.listen((_) {
-                _update();
-            });
-        }
-
-        if (formatter != null) {
-            bindings[varname].onFormat(formatter);
-        }
-
-        return bindings[varname];
-    }
+//    @override
+//    ObservableProperty<T> prop<T>(final String varname, {
+//        final T initWith = null, final FormatObservedValue<T> formatter = null }) {
+//        if (!bindings.containsKey(varname)) {
+//            bindings[varname] = ObservableProperty<T>(initWith, formatter: formatter);
+//            bindings[varname].onChange.listen((_) {
+//                _update();
+//            });
+//        }
+//
+//        if (formatter != null) {
+//            bindings[varname].onFormat(formatter);
+//        }
+//
+//        return bindings[varname];
+//    }
 
     // - private -------------------------------------------------------------------------------------
 
@@ -81,16 +80,16 @@ class AppStore extends Dispatcher with SimpleDataStoreMixin {
 
     }
 
-    /// Optimize the update cycle
-    void _update({ final Action action: UpdateViewAction }) {
-        if (_timer == null || !_timer.isActive) {
-            _timer = Timer(Duration(milliseconds: 200), () {
-                _timer?.cancel();
-                _timer = null;
-                emitChange(action: action);
-            });
-        }
-    }
+//    /// Optimize the update cycle
+//    void _update({ final Action action: UpdateViewAction }) {
+//        if (_timer == null || !_timer.isActive) {
+//            _timer = Timer(Duration(milliseconds: 200), () {
+//                _timer?.cancel();
+//                _timer = null;
+//                emitChange(action: action);
+//            });
+//        }
+//    }
 }
 
 class AppStoreModule extends ioc.IOCModule {

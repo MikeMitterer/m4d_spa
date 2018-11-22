@@ -24,8 +24,6 @@ library m4d_spa;
 
 import 'dart:html' as dom;
 import 'dart:async';
-import 'package:intl/intl.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:logging/logging.dart';
 import 'package:validate/validate.dart';
@@ -39,14 +37,6 @@ export "package:m4d_core/m4d_core.dart";
 import "package:m4d_core/m4d_ioc.dart" as ioc;
 
 import "package:m4d_components/m4d_components.dart";
-import 'package:m4d_template/m4d_template.dart';
-//import "package:m4d_components/m4d_formatter.dart";
-
-//import 'package:m4d_flux/m4d_flux.dart';
-//export 'package:m4d_flux/m4d_flux.dart';
-
-import 'package:m4d_animation/m4d_animation.dart';
-import 'package:m4d_translate/m4d_translate.dart';
 
 import 'package:m4d_router/router.dart';
 
@@ -65,7 +55,7 @@ void registerContentComponents() {
     registerMaterialInclude();
 }
 
-class ContentModule extends ioc.IOCModule {
+class SPAModule extends ioc.IOCModule {
 
     @override
     configure() {

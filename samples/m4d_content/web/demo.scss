@@ -5,6 +5,21 @@
 
     .demo-section {
         min-height: initial !important;
+        .menu {
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+
+            font-size: 13px;
+            font-weight: 100;
+            a {
+                text-decoration: none;
+            }
+        }
+
+        .highlight {
+            font-weight: bold;
+        }
     }
 
     .demo-preview-block {

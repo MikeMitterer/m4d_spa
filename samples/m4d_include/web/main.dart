@@ -1,27 +1,35 @@
-import "dart:html" as dom;
+library app;
 
+import "dart:html" as dom;
 import 'package:console_log_handler/console_log_handler.dart';
 
-import 'package:mdl/mdl.dart';
-import 'main.reflectable.dart';
+import 'package:m4d_core/m4d_ioc.dart' as ioc;
+import 'package:m4d_core/m4d_core.dart';
+
+import 'package:m4d_components/m4d_components.dart';
+
+import 'package:m4d_spa/m4d_spa.dart';
 
 import 'package:prettify/prettify.dart';
 
-main() {
+main() async {
     final Logger _logger = new Logger('main.MaterialInclude');
 
-    configLogging();
-    initializeReflectable();
+    configLogging(show: Level.INFO);
 
-    registerMdl();
+    // Initialize M4D
+    ioc.IOCContainer.bindModules([
+        SPAModule(), CoreComponentsModule()
+    ]);
 
-    componentFactory().run().then((_) {
-        final MaterialInclude include = MaterialInclude.widget(dom.querySelector("#main"));
+    final MaterialApplication app = await componentHandler().upgrade();
+    app.run();
 
-        include.onLoadEnd.listen((_) {
+    final MaterialInclude include = MaterialInclude.widget(dom.querySelector("#main"));
 
-            prettyPrint();
-            _logger.info("Loaded");
-        });
+    include.onLoadEnd.listen((_) {
+
+        prettyPrint();
+        _logger.info("Loaded");
     });
 }

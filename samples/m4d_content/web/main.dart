@@ -91,7 +91,7 @@ main() async {
 
     // Initialize M4D
     ioc.IOCContainer.bindModules([
-        ContentModule(), CoreComponentsModule(), AppStoreModule(), ContentSampleModule()
+        SPAModule(), CoreComponentsModule(), AppStoreModule(), ContentSampleModule()
     ]).bind(coreService.Application).to(Application());
 
     final Application app = await componentHandler().upgrade();

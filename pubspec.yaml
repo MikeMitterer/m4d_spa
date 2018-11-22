@@ -29,12 +29,6 @@ dependencies:
   m4d_template: '>=0.1.0 <1.0.0'
     # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_template
 
-  m4d_animation: '>=0.1.0 <1.0.0'
-    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_animation
-
-  m4d_translate: '>=0.1.0 <1.0.0'
-    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_translate
-
   m4d_router: '>=0.1.0 <1.0.0'
     # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_router
 

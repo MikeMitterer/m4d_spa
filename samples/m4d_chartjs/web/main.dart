@@ -25,7 +25,7 @@ class Application extends MaterialApplication {
 
     @override
     void run() {
-        Future.delayed(Duration(seconds: 1),() => _initStats());
+        Future(() => _initStats());
     }
 
     //- private -----------------------------------------------------------------------------------

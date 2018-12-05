@@ -23,6 +23,8 @@ dependencies:
 
   prettify: '>=0.3.9 <1.0.0'
 
+  chartjs: any
+  
 dev_dependencies:
   build_runner: any
   build_web_compilers: any

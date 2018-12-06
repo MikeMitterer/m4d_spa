@@ -21,6 +21,9 @@ dependencies:
   m4d_dialog: '>=0.1.0 <1.0.0'
     # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_dialog
 
+  m4d_template: '>=0.1.0 <1.0.0'
+    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_template
+
   prettify: '>=0.3.9 <1.0.0'
 
   chartjs: any

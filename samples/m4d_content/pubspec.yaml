@@ -12,27 +12,22 @@ dependencies:
   m4d_spa:
     path: ../..
 
-  m4d_directive: # '>=0.1.0 <1.0.0'
-    path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_directive
+  m4d_directive: '>=0.1.0 <1.0.0'
+    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_directive
 
   m4d_components: '>=0.1.0 <1.0.0'
     # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_components
 
-  m4d_dialog: # '>=0.1.0 <1.0.0'
-    path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_dialog
+  m4d_dialog: '>=0.1.0 <1.0.0'
+    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_dialog
+
+  m4d_template: '>=0.1.0 <1.0.0'
+    # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_template
 
   prettify: '>=0.3.9 <1.0.0'
 
   chartjs: any
-
-  m4d_template:
-    path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_template
-
-dependency_override:
-
-  m4d_template:
-    path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_template
-
+  
 dev_dependencies:
   build_runner: any
   build_web_compilers: any

@@ -9,8 +9,7 @@ import 'package:m4d_core/m4d_ioc.dart' as ioc;
 
 import 'package:m4d_directive/services.dart' as directiveService;
 import 'package:m4d_directive/directive/components/interfaces/actions.dart';
-
-import 'package:m4d_content_sample/components/interfaces/SimpleDataObject.dart';
+import 'package:m4d_template/m4d_template.dart';
 
 final AppStoreService = ioc.Service("app.store.AppStore", ioc.ServiceType.Instance);
 

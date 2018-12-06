@@ -17,10 +17,9 @@ import 'package:m4d_dialog/m4d_dialog.dart';
 
 import 'package:m4d_spa/m4d_spa.dart';
 import 'package:m4d_router/router.dart';
+import 'package:m4d_template/m4d_template.dart';
 
-import 'package:m4d_content_sample/m4d_content_sample.dart';
-
-import 'includes/store.dart';
+import 'model/store.dart';
 
 class ModelChangedEvent { }
 
@@ -91,7 +90,7 @@ main() async {
 
     // Initialize M4D
     ioc.IOCContainer.bindModules([
-        SPAModule(), CoreComponentsModule(), AppStoreModule(), ContentSampleModule()
+        SPAModule(), CoreComponentsModule(), AppStoreModule(), TemplateModule()
     ]).bind(coreService.Application).to(Application());
 
     final Application app = await componentHandler().upgrade();

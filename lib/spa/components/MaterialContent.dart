@@ -69,7 +69,7 @@ class MaterialContent extends MdlComponent {
     static const _MaterialContentCssClasses _cssClasses = const _MaterialContentCssClasses();
     final DomRenderer _renderer = DomRenderer();
 
-    MaterialContent.fromElement(final dom.HtmlElement element,final ioc.IOCContainer iocContainer)
+    MaterialContent.fromElement(final dom.HtmlElement element,final ioc.Container iocContainer)
         : super(element,iocContainer) {
     }
 
@@ -112,7 +112,7 @@ class _MaterialContentCssClasses {
 
 /// creates MdlConfig for MaterialContent
 MdlConfig materialContentConfig() => new MdlWidgetConfig<MaterialContent>(
-    _MaterialContentCssClasses.MAIN_CLASS, (final dom.HtmlElement element,final ioc.IOCContainer iocContainer)
+    _MaterialContentCssClasses.MAIN_CLASS, (final dom.HtmlElement element,final ioc.Container iocContainer)
         => new MaterialContent.fromElement(element,iocContainer));
 
 /// registration-Helper

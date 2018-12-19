@@ -21,7 +21,7 @@ part of m4d_spa;
 
 abstract class MaterialController {
     /// [iocContainer] will be set after {ViewFactory} receives the {onLoadEnd} Event
-    ioc.IOCContainer iocContainer;
+    ioc.Container iocContainer;
 
     /// [loaded] is called after [ViewFactory] received the onLoadEnd-Event
     ///

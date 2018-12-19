@@ -35,7 +35,7 @@ class MaterialInclude extends MdlComponent {
     /// Everyone can listen to this {onLoadEnd} stream
     Stream<MaterialContentEvent> onLoadEnd;
 
-    MaterialInclude.fromElement(final dom.HtmlElement element,final ioc.IOCContainer iocContainer)
+    MaterialInclude.fromElement(final dom.HtmlElement element,final ioc.Container iocContainer)
         : super(element,iocContainer) {
 
         onLoadEnd = _controller.stream as Stream<MaterialContentEvent>;
@@ -104,7 +104,7 @@ class _MaterialIncludeCssClasses {
 
 /// creates MdlConfig for MaterialInclude
 MdlConfig materialIncludeConfig() => new MdlWidgetConfig<MaterialInclude>(
-    _MaterialIncludeCssClasses.MAIN_CLASS, (final dom.HtmlElement element,final ioc.IOCContainer iocContainer)
+    _MaterialIncludeCssClasses.MAIN_CLASS, (final dom.HtmlElement element,final ioc.Container iocContainer)
         => new MaterialInclude.fromElement(element,iocContainer));
 
 /// registration-Helper

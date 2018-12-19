@@ -91,15 +91,15 @@ class AppStore extends Dispatcher with SimpleDataStoreMixin {
 //    }
 }
 
-class AppStoreModule extends ioc.IOCModule {
+class AppStoreModule extends ioc.Module {
     final _store = AppStore._private();
 
     @override
     configure() {
-        ioc.IOCContainer().bind(AppStoreService).to(_store);
-        ioc.IOCContainer().bind(directiveService.SimpleValueStore).to(_store);
+        ioc.Container().bind(AppStoreService).to(_store);
+        ioc.Container().bind(directiveService.SimpleValueStore).to(_store);
     }
 
     @override
-    List<ioc.IOCModule> get dependsOn => <ioc.IOCModule>[ DirectivesModule()];
+    List<ioc.Module> get dependsOn => <ioc.Module>[ DirectivesModule()];
 }

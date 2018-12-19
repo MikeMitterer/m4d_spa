@@ -64,7 +64,7 @@ main() async {
     configLogging(show: Level.INFO);
 
     // Initialize M4D
-    ioc.IOCContainer.bindModules([
+    ioc.Container.bindModules([
         SPAModule(), CoreComponentsModule()
     ]).bind(coreService.Application).to(Application());;
 

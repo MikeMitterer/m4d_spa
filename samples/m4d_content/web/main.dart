@@ -24,7 +24,7 @@ import 'model/store.dart';
 class ModelChangedEvent { }
 
 class Application extends MaterialApplication {
-    final AppStore _store = ioc.IOCContainer().resolve(AppStoreService).as<AppStore>();
+    final AppStore _store = ioc.Container().resolve(AppStoreService).as<AppStore>();
     final router = Router();
 
     @override
@@ -89,7 +89,7 @@ main() async {
     configLogging(show: Level.INFO);
 
     // Initialize M4D
-    ioc.IOCContainer.bindModules([
+    ioc.Container.bindModules([
         SPAModule(), CoreComponentsModule(), AppStoreModule(), TemplateModule()
     ]).bind(coreService.Application).to(Application());
 
@@ -121,7 +121,7 @@ class ObservableController extends MaterialController  {
         _logger.info("ObservableController loaded...");
 
         _timer = Timer.periodic(Duration(seconds: 1), (_) {
-        final _store = ioc.IOCContainer().resolve(AppStoreService).as<AppStore>();
+        final _store = ioc.Container().resolve(AppStoreService).as<AppStore>();
 
         String _getTime() {
             final DateTime now = new DateTime.now();

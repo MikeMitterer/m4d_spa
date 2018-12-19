@@ -55,7 +55,7 @@ void registerContentComponents() {
     registerMaterialInclude();
 }
 
-class SPAModule extends ioc.IOCModule {
+class SPAModule extends ioc.Module {
 
     @override
     configure() {

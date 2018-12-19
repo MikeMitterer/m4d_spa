@@ -4,6 +4,7 @@ Material Design 4 Dart - SinglePage
 ## [Unreleased](http://github.com/mikemitterer/m4d_spa/compare/v0.1...HEAD)
 
 ### Bugs
+* IOCContainer was used instead of Container [97c0257](https://github.com/mikemitterer/m4d_spa/commit/97c02579ead2bac003da39b413cb3427eb2cda49)
 * Wrong description in HTML-Template [cabb432](https://github.com/mikemitterer/m4d_spa/commit/cabb4323e568cc624eb7feacd4853d90386f3a65)
 * prettify dependency for samples was not in template [4e93fab](https://github.com/mikemitterer/m4d_spa/commit/4e93fabb69e156a849d4bdf237b2645fc3a70098)
 

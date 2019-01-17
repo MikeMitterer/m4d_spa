@@ -2,7 +2,6 @@ library app;
 
 import "dart:html" as dom;
 import "dart:async";
-import "dart:math" as Math;
 
 import 'package:intl/intl.dart';
 import 'package:console_log_handler/console_log_handler.dart';
